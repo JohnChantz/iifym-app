@@ -3,9 +3,28 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>macros-page</ion-title>
+    <ion-title>IIFYM/Macros</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-
+  <h4>IIFYM/Macros Calculator</h4>
+  <p>
+    Here you can set the percentages you want to have in your macros split, or set
+    your macros by grams.
+  </p>
+  <h5>Set your macros bellow:</h5>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Carbohydrates</ion-label>
+      <ion-input type="number" [(ngModel)]="carbs"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Protein</ion-label>
+      <ion-input type="text" [(ngModel)]="protein"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Fats</ion-label>
+      <ion-input type="text" [(ngModel)]="fats"></ion-input>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -2,16 +2,18 @@ import {Component, ViewChild} from '@angular/core';
 import {MenuController, Nav} from "ionic-angular";
 
 import {HomePage} from "../pages/home/home";
-import {SettingsPage} from "../pages/settings/settings";
 import {BodystatsPage} from "../pages/bodystats/bodystats";
 import {MacrosPage} from "../pages/macros/macros";
+import {LoginPage} from "../pages/login/login";
+import {ProfilePage} from "../pages/profile/profile";
+
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage = HomePage;
+  rootPage = LoginPage;
   pages: Array<{ title: string, component: any }>;
 
 
@@ -20,7 +22,7 @@ export class MyApp {
       {title: 'Home', component: HomePage},
       {title: 'Body Stats', component: BodystatsPage},
       {title: 'IIFYM/Macros', component: MacrosPage},
-      {title: 'Settings', component: SettingsPage}
+      {title: 'Profile', component: ProfilePage}
     ];
   }
 

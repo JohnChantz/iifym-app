@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Log In</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h4>Welcome to IIFYM App!</h4>
+  <hr>
+  <h5>Fill in your username & password bellow to enter your account</h5>
+  <form (ngSubmit)="login()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Enter your Email</ion-label>
+        <ion-input type="text" [(ngModel)]="user.username" name="username" required=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Enter your Password</ion-label>
+        <ion-input type="password" [(ngModel)]="user.password" name="password" required=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button full round color="secondary" type="submit">Log in</button>
+      </ion-item>
+    </ion-list>
+  </form>
+  <ion-item>
+    <button ion-button full round color="light" (click)="register()">Register</button>
+  </ion-item>
+</ion-content>

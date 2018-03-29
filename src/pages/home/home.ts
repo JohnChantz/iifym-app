@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, ToastController} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import {SettingsPage} from "../settings/settings";
+import {User} from "../../models/user";
 
 @IonicPage()
 @Component({
@@ -8,21 +9,20 @@ import {SettingsPage} from "../settings/settings";
   templateUrl: 'home.html',
 })
 export class HomePage {
-  private weight: number;
-  private height: number;
-  private age: number;
-  private gender: string;
+  private user = {} as User;
   private calories: number;
   private caloriesCalculated: boolean = false;
   private boxChecked: boolean = false;
   private multiplier: number;
   private tdee: number;
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
+    this.user = this.navParams.get('user');
+    console.log(this.user);
   }
 
   loadSettingsPage() {
@@ -30,7 +30,7 @@ export class HomePage {
   }
 
   checkValuesNotEmpty() {
-    if (this.weight != null && this.height != null && this.age != null && this.gender != null) {
+    if (this.user.weight != null && this.user.height != null && this.user.age != null && this.user.gender != null) {
       return true
     } else {
       return false;
@@ -38,15 +38,15 @@ export class HomePage {
   }
 
   calorieCalculator() {
-    console.log(this.weight + " " + this.height + " " + this.age + " " + this.gender);
+    console.log(this.user.weight + " " + this.user.height + " " + this.user.age + " " + this.user.gender);
     let check = this.checkValuesNotEmpty();
     if (check) {
-      if (this.gender == 'male') {
+      if (this.user.gender == 'male') {
         console.log('Calculating for Male');
-        this.calories = (10 * this.weight) + (6.25 * this.height) + (5 * this.age) + 5;
-      } else if (this.gender == 'female') {
+        this.calories = (10 * this.user.weight) + (6.25 * this.user.height) + (5 * this.user.age) + 5;
+      } else if (this.user.gender == 'female') {
         console.log('Calculating for Female');
-        this.calories = (10 * this.weight) + (6.25 * this.height) - (5 * this.age) - 161;
+        this.calories = (10 * this.user.weight) + (6.25 * this.user.height) - (5 * this.user.age) - 161;
       }
       this.caloriesCalculated = true;
     } else {
@@ -72,7 +72,8 @@ export class HomePage {
       this.boxChecked = false;
     console.log(this.boxChecked);
   }
-  tdeeCalculator(){
+
+  tdeeCalculator() {
     this.tdee = this.calories * this.multiplier;
   }
 }

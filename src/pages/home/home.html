@@ -13,8 +13,7 @@
 </ion-header>
 
 <ion-content padding>
-  <h4>Welcome to IIFYM App!</h4>
-  <hr>
+  <h4>Welcome back!</h4>
   <p>Please fill the input fields with your corresponding values and press "Calculate" button.</p>
   <ion-list>
     <ion-item>
@@ -52,8 +51,8 @@
         <ion-item>
           <ion-label>Activity Multiplier</ion-label>
           <ion-select [(ngModel)]="multiplier" (ionChange)="tdeeCalculator()">
-            <ion-option value="1.1">sedentary </ion-option>
-            <ion-option value="1.2">light activity </ion-option>
+            <ion-option value="1.1">sedentary</ion-option>
+            <ion-option value="1.2">light activity</ion-option>
             <ion-option value="1.35">moderate activity</ion-option>
             <ion-option value="1.45">very active</ion-option>
             <ion-option value="1.7">extra active</ion-option>

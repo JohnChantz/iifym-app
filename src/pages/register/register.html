@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Register</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <h4>Register to our App</h4>
+  <hr>
+  <h5>Fill in your username & password bellow to create your account</h5>
+  <form (ngSubmit)="register()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Enter your Email</ion-label>
+        <ion-input type="text" [(ngModel)]="user.username" name="username" required=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Enter your Password</ion-label>
+        <ion-input type="password" [(ngModel)]="user.password" name="password" required=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button full round color="secondary" type="submit">Register</button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>
