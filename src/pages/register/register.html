@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Register</ion-title>
   </ion-navbar>
 </ion-header>
@@ -11,14 +11,14 @@
     <ion-list>
       <ion-item>
         <ion-label floating>Enter your Email</ion-label>
-        <ion-input type="text" [(ngModel)]="user.username" name="username" required=""></ion-input>
+        <ion-input type="text" [(ngModel)]="user.email" name="email" required=""></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Enter your Password</ion-label>
         <ion-input type="password" [(ngModel)]="user.password" name="password" required=""></ion-input>
       </ion-item>
       <ion-item>
-        <button ion-button full round color="secondary" type="submit">Register</button>
+        <button ion-button full round color="primary" type="submit">Register</button>
       </ion-item>
     </ion-list>
   </form>

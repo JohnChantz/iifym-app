@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -13,24 +13,24 @@
 </ion-header>
 
 <ion-content padding>
-  <h4>Welcome back!</h4>
+  <h4>Welcome back {{user.username}}!</h4>
   <p>Please fill the input fields with your corresponding values and press "Calculate" button.</p>
   <ion-list>
     <ion-item>
       <ion-label color="primary">Current Weight:</ion-label>
-      <ion-input placeholder="weight" [(ngModel)]="weight"></ion-input>
+      <ion-input placeholder="weight" [(ngModel)]="user.weight"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary">Height:</ion-label>
-      <ion-input placeholder="height in cm" [(ngModel)]="height"></ion-input>
+      <ion-input placeholder="height in cm" [(ngModel)]="user.height"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary">Age:</ion-label>
-      <ion-input placeholder="age" [(ngModel)]="age"></ion-input>
+      <ion-input placeholder="age" [(ngModel)]="user.age"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary">Gender:</ion-label>
-      <ion-select [(ngModel)]="gender">
+      <ion-select [(ngModel)]="user.gender">
         <ion-option value="male">Male</ion-option>
         <ion-option value="female">Female</ion-option>
       </ion-select>

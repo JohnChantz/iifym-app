@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -7,6 +7,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
+  <h5>Please fill in your measurements</h5>
   <ion-list>
     <ion-item>
       <ion-label floating>Enter your weight</ion-label>
@@ -17,7 +18,11 @@
       <ion-input type="text" name="height" required=""></ion-input>
     </ion-item>
     <ion-item>
-      <button ion-button full round color="secondary" type="submit">Save</button>
+      <ion-label floating>Enter your body fat percentage</ion-label>
+      <ion-input type="text" name="bodyfat" required=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button full round color="primary" type="submit">Save</button>
     </ion-item>
   </ion-list>
 </ion-content>

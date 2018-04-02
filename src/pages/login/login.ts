@@ -26,7 +26,9 @@ export class LoginPage {
 
     this.aFAuth.auth.signInWithEmailAndPassword(this.user.username, this.user.password)
       .then(result => {
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot(HomePage, {
+          user: this.user
+        });
 
       })
       .catch(err => {

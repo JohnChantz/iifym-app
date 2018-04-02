@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Profile</ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,25 +9,29 @@
   <ion-list>
     <ion-item>
       <ion-label floating>Enter your Username</ion-label>
-      <ion-input type="text" name="username" required=""></ion-input>
+      <ion-input type="text" name="username" [(ngModel)]="userProfile.username"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Enter your Email</ion-label>
-      <ion-input type="text" name="username" required=""></ion-input>
+      <ion-input type="text" name="email" [(ngModel)]="userProfile.email" readonly></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Enter your age</ion-label>
-      <ion-input type="text" name="username" required=""></ion-input>
+      <ion-label floating>Enter your first name</ion-label>
+      <ion-input type="text" name="fname" [(ngModel)]="userProfile.fname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Enter your last name</ion-label>
+      <ion-input type="text" name="lname"[(ngModel)]="userProfile.lname" ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary">Gender:</ion-label>
-      <ion-select>
+      <ion-select [(ngModel)]="userProfile.gender">
         <ion-option value="male">Male</ion-option>
         <ion-option value="female">Female</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
-      <button ion-button full round color="secondary" type="submit">Save</button>
+      <button ion-button full round color="primary" (click)="saveChanges()">Save</button>
     </ion-item>
   </ion-list>
 </ion-content>

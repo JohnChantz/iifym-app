@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import {IonicPage, NavController, ToastController} from 'ionic-angular';
 import {AngularFireAuth} from "angularfire2/auth";
 import {User} from "../../models/user";
-import {HomePage} from "../home/home";
+import {ProfilePage} from "../profile/profile";
 
 @IonicPage()
 @Component({
@@ -13,7 +13,7 @@ export class RegisterPage {
 
   private user = {} as User;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private toastCtrl: ToastController, private afAuth: AngularFireAuth) {
+  constructor(public navCtrl: NavController, private toastCtrl: ToastController, private afAuth: AngularFireAuth) {
   }
 
   ionViewDidLoad() {
@@ -21,10 +21,11 @@ export class RegisterPage {
   }
 
   async register() {
-    this.afAuth.auth.createUserWithEmailAndPassword(this.user.username, this.user.password)
+    this.afAuth.auth.createUserWithEmailAndPassword(this.user.email, this.user.password)
       .then(result => {
-        this.navCtrl.setRoot(HomePage);
-
+        this.navCtrl.setRoot(ProfilePage, {
+          user: this.user
+        });
       }).catch(err => {
       console.log(err.message);
       this.showToastWithCloseButton(err.message);
