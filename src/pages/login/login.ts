@@ -4,6 +4,7 @@ import {User} from "../../models/user";
 import {HomePage} from "../home/home";
 import {AngularFireAuth} from "angularfire2/auth";
 import {RegisterPage} from "../register/register";
+import {AngularFireDatabase} from "angularfire2/database";
 
 @IonicPage()
 @Component({
@@ -14,7 +15,7 @@ export class LoginPage {
 
   private user = {} as User;
 
-  constructor(private navCtrl: NavController, private aFAuth: AngularFireAuth, private toastCtrl: ToastController) {
+  constructor(private navCtrl: NavController, private aFAuth: AngularFireAuth, private toastCtrl: ToastController, private afDatabase: AngularFireDatabase) {
   }
 
   ionViewDidLoad() {
@@ -24,12 +25,9 @@ export class LoginPage {
   async login() {
     console.log(`Authorizing user: ${this.user.username} , ${this.user.password}`);
 
-    this.aFAuth.auth.signInWithEmailAndPassword(this.user.username, this.user.password)
+    await this.aFAuth.auth.signInWithEmailAndPassword(this.user.username, this.user.password)
       .then(result => {
-        this.navCtrl.setRoot(HomePage, {
-          user: this.user
-        });
-
+        this.navCtrl.setRoot(HomePage);
       })
       .catch(err => {
         console.log(err.message)
@@ -46,7 +44,7 @@ export class LoginPage {
       message: errMessage,
       showCloseButton: true,
       closeButtonText: 'Close',
-      duration: 3000
+      duration: 5000
     });
     toast.present();
   }

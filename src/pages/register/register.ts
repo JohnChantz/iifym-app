@@ -37,7 +37,7 @@ export class RegisterPage {
       message: errMessage,
       showCloseButton: true,
       closeButtonText: 'Close',
-      duration: 3000
+      duration: 5000
     });
     toast.present();
   }

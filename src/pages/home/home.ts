@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import {SettingsPage} from "../settings/settings";
 import {User} from "../../models/user";
+import {AngularFireAuth} from "angularfire2/auth";
+import {AngularFireDatabase} from "angularfire2/database";
 
 @IonicPage()
 @Component({
@@ -16,13 +18,17 @@ export class HomePage {
   private multiplier: number;
   private tdee: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, private afAuth: AngularFireAuth, private afDatabase: AngularFireDatabase) {
   }
 
-  ionViewDidLoad() {
+  ionViewWillLoad() {
     console.log('ionViewDidLoad HomePage');
-    this.user = this.navParams.get('user');
-    console.log(this.user);
+    this.afAuth.authState.take(1).subscribe(auth => {
+      this.afDatabase.object(`profile/${auth.uid}`).snapshotChanges().subscribe(data=>{
+        this.user = data.payload.val();
+        console.log(this.user);
+      });
+    });
   }
 
   loadSettingsPage() {
